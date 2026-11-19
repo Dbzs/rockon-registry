@@ -1,6 +1,6 @@
 {
   "OpenVPN Access Server": {
-    "description": "OpenVPN Access Server provides an OpenVPN VPN server with web-based administration and client interfaces using the official OpenVPN Access Server container image.",
+    "description": "OpenVPN Access Server provides an OpenVPN VPN server with web-based administration and client interfaces using the official OpenVPN Access Server container image.<p>Supported architectures: amd64, arm64.</p>",
     "version": "1.0",
     "website": "https://openvpn.net/access-server/",
     "more_info": "<p>This Rock-on uses the official OpenVPN Access Server container image.</p><p>Create a dedicated Rockstor Share for persistent configuration. The default administrator username is <code>openvpn</code>. Retrieve the initial administrator password from the container log after the first start.</p><p>For systems behind a router, forward the desired VPN port, normally UDP 1194, from the router to the Rockstor system. There is normally no need to expose the TCP 943 administrative interface through the router.</p>",
