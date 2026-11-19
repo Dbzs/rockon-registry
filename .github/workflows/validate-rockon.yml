@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'openvpn-access-server.json'
+      - 'root.json'
       - '.github/workflows/validate-rockon.yml'
 
 jobs:
