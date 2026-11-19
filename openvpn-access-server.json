@@ -1,29 +1,36 @@
 {
   "OpenVPN Access Server": {
+    "description": "OpenVPN Access Server provides an OpenVPN VPN server with web-based administration and client interfaces using the official OpenVPN Access Server container image.",
+    "version": "1.0",
+    "website": "https://openvpn.net/access-server/",
+    "more_info": "<p>This Rock-on uses the official OpenVPN Access Server container image.</p><p>Create a dedicated Rockstor Share for persistent configuration. The default administrator username is <code>openvpn</code>. Retrieve the initial administrator password from the container log after the first start.</p><p>For systems behind a router, forward the desired VPN port, normally UDP 1194, from the router to the Rockstor system. There is normally no need to expose the TCP 943 administrative interface through the router.</p>",
+    "ui": {
+      "slug": "/admin"
+    },
     "containers": {
       "openvpn-as": {
         "image": "openvpn/openvpn-as",
         "tag": "latest",
         "launch_order": 1,
         "ports": {
-          "943": {
-            "description": "HTTPS port for the OpenVPN Access Server Admin and Client Web UIs.",
-            "host_default": 943,
-            "label": "Web interface port",
-            "protocol": "tcp",
-            "ui": true
+          "1194": {
+            "description": "UDP port for OpenVPN VPN connections.",
+            "label": "OpenVPN UDP port",
+            "host_default": 1194,
+            "protocol": "udp"
           },
           "443": {
             "description": "TCP port for OpenVPN TCP connections. Host port 9443 is used by default to avoid a conflict with the Rockstor HTTPS service.",
-            "host_default": 9443,
             "label": "OpenVPN TCP port",
+            "host_default": 9443,
             "protocol": "tcp"
           },
-          "1194": {
-            "description": "UDP port for OpenVPN VPN connections.",
-            "host_default": 1194,
-            "label": "OpenVPN UDP port",
-            "protocol": "udp"
+          "943": {
+            "description": "HTTPS port for the OpenVPN Access Server Admin and Client Web UIs.",
+            "label": "Web interface port",
+            "host_default": 943,
+            "protocol": "tcp",
+            "ui": true
           }
         },
         "volumes": {
@@ -49,13 +56,6 @@
           }
         }
       }
-    },
-    "description": "OpenVPN Access Server provides an OpenVPN VPN server with web-based administration and client interfaces using the official OpenVPN Access Server container image.",
-    "more_info": "<p>This Rock-on uses the official OpenVPN Access Server container image.</p><p>Create a dedicated Rockstor Share for persistent configuration. The default administrator username is <code>openvpn</code>. Retrieve the initial administrator password from the container log after the first start.</p><p>For systems behind a router, forward the desired VPN port, normally UDP 1194, from the router to the Rockstor system. There is normally no need to expose the TCP 943 administrative interface through the router.</p>",
-    "ui": {
-      "slug": "/admin"
-    },
-    "version": "1.0",
-    "website": "https://openvpn.net/access-server/"
+    }
   }
 }
